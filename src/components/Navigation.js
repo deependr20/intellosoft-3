@@ -34,27 +34,27 @@ export default function Navigation() {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
       className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white shadow-lg py-4' : 'bg-white/95 backdrop-blur-md py-6'
+        scrolled ? 'bg-white shadow-lg py-2' : 'bg-white/95 backdrop-blur-md py-4'
       }`}
     >
       <div className="container-custom">
         <div className="flex md:px-0 px-6 justify-between items-center">
-          {/* Logo */}
+          {/* Logo (uses image placed in /public) */}
           <Link href="/">
             <motion.div
               whileHover={{ scale: 1.05 }}
               className="flex items-center space-x-3 cursor-pointer"
             >
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary-600 to-secondary-600 rounded-xl blur-lg opacity-50"></div>
-                <div className="relative w-12 h-12 bg-gradient-to-br from-primary-600 to-secondary-600 rounded-xl flex items-center justify-center shadow-lg">
-                  <span className="text-white font-bold text-2xl">I</span>
-                </div>
+              <div className="flex items-center justify-center">
+                <img
+                  src="/intellosoft-logo.png"
+                  alt="Intellosoft logo"
+                  className={`block w-auto object-contain transition-all duration-300 ${
+                    scrolled ? 'h-12 md:h-14 lg:h-16' : 'h-16 md:h-18 lg:h-20'
+                  }`}
+                />
               </div>
-              <div>
-                <span className="font-bold text-2xl text-dark-900">Intellosoft</span>
-                <p className="text-xs text-primary-600 -mt-1">Infotech</p>
-              </div>
+              <span className="sr-only">Intellosoft Infotech</span>
             </motion.div>
           </Link>
 
@@ -136,7 +136,7 @@ export default function Navigation() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.6 }}
-                    className="w-full bg-gradient-to-r from-primary-600 to-secondary-600 text-white px-6 py-3 rounded-full font-semibold"
+                    className="w-full bg-gradient-to-r mt-5 from-primary-600 to-secondary-600 text-white px-6 py-3 rounded-full font-semibold"
                     onClick={() => setIsOpen(false)}
                   >
                     Get Started

@@ -3,6 +3,8 @@
 import { motion } from 'framer-motion'
 import { Github, Linkedin, Twitter, Mail, MapPin, Phone, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
+import Image from 'next/image'
+
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -71,14 +73,11 @@ export default function Footer() {
               viewport={{ once: true }}
               className="space-y-6"
             >
-              <div className="flex items-center space-x-3">
-                <div className="w-12 h-12 bg-gradient-to-br from-primary-600 to-secondary-600 rounded-xl flex items-center justify-center shadow-lg">
-                  <span className="text-white font-bold text-2xl">I</span>
+              <div className="flex items-center">
+                <div className="flex items-center justify-center">
+                  <img src="/intellosoft-logosss.png" alt="Intellosoft logo" className="block w-auto h-16 md:h-20 lg:h-24 object-contain" />
                 </div>
-                <div>
-                  <span className="font-bold text-2xl">Intellosoft</span>
-                  <p className="text-xs text-gray-400">Infotech</p>
-                </div>
+                <span className="sr-only">Intellosoft Infotech</span>
               </div>
               
               <p className="text-lg gradient-text font-semibold">

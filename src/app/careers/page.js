@@ -147,7 +147,7 @@ export default function Careers() {
               transition={{ duration: 0.8 }}
             >
               <div className="relative">
-                <div className="absolute -inset-4 bg-gradient-to-r from-primary-600 to-secondary-600 rounded-3xl blur-2xl opacity-20"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-primary-600 to-secondary-600 rounded-3xl blur-2xl opacity-20 transform scale-105"></div>
                 <img
                   src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&auto=format&fit=crop"
                   alt="Team collaboration"

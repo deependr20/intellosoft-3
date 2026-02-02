@@ -2,7 +2,8 @@
 
 import { motion } from 'framer-motion'
 import { useState } from 'react'
-import { Mail, MapPin, Phone, Send, Clock, MessageSquare } from 'lucide-react'
+import { Mail, MapPin, Phone, Send, Clock, MessageSquare, CheckCircle2, Sparkles } from 'lucide-react'
+import Image from 'next/image'
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -29,28 +30,32 @@ export default function Contact() {
 
   const contactInfo = [
     {
-      icon: <MapPin size={28} />,
+      icon: <MapPin size={24} />,
       title: 'Visit Us',
       content: ['Block - 1, Mahendra Business Square', 'Bawadiya Kalan, Bhopal', 'Madhya Pradesh 462039, India'],
-      color: 'from-blue-500 to-blue-600'
+      gradient: 'from-blue-500 to-cyan-500',
+      iconBg: 'bg-blue-50'
     },
     {
-      icon: <Mail size={28} />,
+      icon: <Mail size={24} />,
       title: 'Email Us',
       content: ['gourav@intellosoft.io', 'info@intellosoft.io'],
-      color: 'from-purple-500 to-purple-600'
+      gradient: 'from-purple-500 to-pink-500',
+      iconBg: 'bg-purple-50'
     },
     {
-      icon: <Phone size={28} />,
+      icon: <Phone size={24} />,
       title: 'Call Us',
       content: ['Available during business hours', 'Mon - Fri: 9:00 AM - 6:00 PM IST'],
-      color: 'from-green-500 to-green-600'
+      gradient: 'from-green-500 to-emerald-500',
+      iconBg: 'bg-green-50'
     },
     {
-      icon: <Clock size={28} />,
+      icon: <Clock size={24} />,
       title: 'Business Hours',
       content: ['Monday - Friday: 9:00 AM - 6:00 PM', 'Saturday: 10:00 AM - 2:00 PM', 'Sunday: Closed'],
-      color: 'from-orange-500 to-orange-600'
+      gradient: 'from-orange-500 to-amber-500',
+      iconBg: 'bg-orange-50'
     },
   ]
 
@@ -66,79 +71,129 @@ export default function Contact() {
     'Other'
   ]
 
+  const benefits = [
+    { icon: '🎯', text: 'Free consultation & project scoping' },
+    { icon: '💰', text: 'No obligation, transparent quote' },
+    { icon: '👨‍💻', text: 'Expert technical advice' },
+    { icon: '🤝', text: 'Flexible engagement models' },
+  ]
+
   return (
     <main className="pt-20">
-      {/* Hero Section */}
-      <section className="section-padding bg-gradient-to-br from-primary-50 via-white to-secondary-50">
-        <div className="container-custom">
+      {/* Hero Section with Background Image */}
+      <section className="relative section-padding overflow-hidden">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary-900/95 via-primary-800/90 to-secondary-900/95 z-10"></div>
+          <img
+            src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1600&auto=format&fit=crop"
+            alt="Contact background"
+            className="w-full h-full object-cover"
+          />
+        </div>
+
+        <div className="container-custom relative z-20">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center max-w-4xl mx-auto mb-16"
+            className="text-center max-w-4xl mx-auto"
           >
             <motion.div
               initial={{ opacity: 0, scale: 0.5 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
               className="inline-block mb-6"
             >
-              <div className="w-20 h-20 bg-gradient-to-br from-primary-600 to-secondary-600 rounded-2xl flex items-center justify-center mx-auto shadow-2xl">
-                <MessageSquare className="text-white" size={40} />
+              <div className="relative">
+                <div className="absolute inset-0 bg-white/20 rounded-3xl blur-xl"></div>
+                <div className="relative w-20 h-20 bg-white rounded-2xl flex items-center justify-center mx-auto shadow-2xl">
+                  <MessageSquare className="text-primary-600" size={40} />
+                </div>
               </div>
             </motion.div>
-            <h1 className="text-5xl md:text-6xl font-bold text-dark-900 mb-6">
-              Get In <span className="gradient-text">Touch</span>
-            </h1>
-            <p className="text-xl text-dark-600 leading-relaxed">
-              Have a project in mind? We'd love to hear from you. Send us a message and 
-              we'll respond within 24 hours.
-            </p>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6">
+                Let's Start a <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">Conversation</span>
+              </h1>
+              <p className="text-xl md:text-2xl text-white/90 leading-relaxed max-w-3xl mx-auto">
+                Have a project in mind? We'd love to hear from you. Get in touch and let's bring your vision to life.
+              </p>
+            </motion.div>
           </motion.div>
+        </div>
 
-          {/* Contact Info Cards */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        {/* Decorative Elements */}
+        <div className="absolute top-20 left-0 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl translate-x-8"></div>
+        <div className="absolute bottom-20 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl -translate-x-8"></div>
+      </section>
+
+      {/* Contact Info Cards - Floating over hero */}
+      <section className="relative -mt-16 z-30">
+        <div className="container-custom">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {contactInfo.map((info, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ y: -10 }}
-                className="bg-white rounded-2xl shadow-lg p-6 card-hover"
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
+                whileHover={{ y: -8, scale: 1.02 }}
+                className="group relative bg-white rounded-2xl shadow-xl p-6 border border-gray-100 overflow-hidden"
               >
-                <div className={`w-14 h-14 bg-gradient-to-br ${info.color} rounded-xl flex items-center justify-center text-white mb-4`}>
-                  {info.icon}
+                {/* Gradient background on hover */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${info.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}></div>
+                
+                <div className="relative">
+                  <div className={`inline-flex items-center justify-center w-14 h-14 ${info.iconBg} rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                    <div className={`text-transparent bg-clip-text bg-gradient-to-br ${info.gradient}`}>
+                      {info.icon}
+                    </div>
+                  </div>
+                  <h4 className="text-lg font-bold text-gray-900 mb-3">{info.title}</h4>
+                  {info.content.map((line, idx) => (
+                    <p key={idx} className="text-gray-600 text-sm leading-relaxed">
+                      {line}
+                    </p>
+                  ))}
                 </div>
-                <h4 className="text-lg font-bold text-dark-900 mb-3">{info.title}</h4>
-                {info.content.map((line, idx) => (
-                  <p key={idx} className="text-dark-600 text-sm leading-relaxed">
-                    {line}
-                  </p>
-                ))}
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
 
-          {/* Contact Form & Map */}
-          <div className="grid lg:grid-cols-5 gap-12">
-            {/* Contact Form */}
+      {/* Main Content Section */}
+      <section className="section-padding bg-gradient-to-b from-gray-50 to-white">
+        <div className="container-custom">
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
+            
+            {/* Left Column - Form */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="lg:col-span-3"
             >
-              <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12">
-                <h3 className="text-3xl font-bold text-dark-900 mb-2">Send us a Message</h3>
-                <p className="text-dark-600 mb-8">Fill out the form below and we'll get back to you as soon as possible.</p>
+              <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-10 border border-gray-100">
+                <div className="mb-8">
+                  <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+                    Send us a Message
+                  </h3>
+                  <p className="text-gray-600">
+                    Fill out the form below and our team will get back to you within 24 hours.
+                  </p>
+                </div>
                 
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-semibold text-dark-700 mb-2">
+                      <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">
                         Full Name *
                       </label>
                       <input
@@ -148,13 +203,13 @@ export default function Contact() {
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-primary-500 focus:outline-none transition-colors"
+                        className="w-full px-4 py-3.5 rounded-xl border-2 border-gray-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none transition-all"
                         placeholder="John Doe"
                       />
                     </div>
 
                     <div>
-                      <label htmlFor="email" className="block text-sm font-semibold text-dark-700 mb-2">
+                      <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
                         Email Address *
                       </label>
                       <input
@@ -164,7 +219,7 @@ export default function Contact() {
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-primary-500 focus:outline-none transition-colors"
+                        className="w-full px-4 py-3.5 rounded-xl border-2 border-gray-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none transition-all"
                         placeholder="john@example.com"
                       />
                     </div>
@@ -172,7 +227,7 @@ export default function Contact() {
 
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="phone" className="block text-sm font-semibold text-dark-700 mb-2">
+                      <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 mb-2">
                         Phone Number
                       </label>
                       <input
@@ -181,13 +236,13 @@ export default function Contact() {
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-primary-500 focus:outline-none transition-colors"
+                        className="w-full px-4 py-3.5 rounded-xl border-2 border-gray-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none transition-all"
                         placeholder="+91 98765 43210"
                       />
                     </div>
 
                     <div>
-                      <label htmlFor="company" className="block text-sm font-semibold text-dark-700 mb-2">
+                      <label htmlFor="company" className="block text-sm font-semibold text-gray-700 mb-2">
                         Company Name
                       </label>
                       <input
@@ -196,14 +251,14 @@ export default function Contact() {
                         name="company"
                         value={formData.company}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-primary-500 focus:outline-none transition-colors"
+                        className="w-full px-4 py-3.5 rounded-xl border-2 border-gray-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none transition-all"
                         placeholder="Your Company"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="service" className="block text-sm font-semibold text-dark-700 mb-2">
+                    <label htmlFor="service" className="block text-sm font-semibold text-gray-700 mb-2">
                       Service Interested In *
                     </label>
                     <select
@@ -212,7 +267,7 @@ export default function Contact() {
                       value={formData.service}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-primary-500 focus:outline-none transition-colors"
+                      className="w-full px-4 py-3.5 rounded-xl border-2 border-gray-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none transition-all"
                     >
                       <option value="">Select a service</option>
                       {services.map((service, index) => (
@@ -222,7 +277,7 @@ export default function Contact() {
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-sm font-semibold text-dark-700 mb-2">
+                    <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-2">
                       Your Message *
                     </label>
                     <textarea
@@ -231,9 +286,9 @@ export default function Contact() {
                       value={formData.message}
                       onChange={handleChange}
                       required
-                      rows="6"
-                      className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-primary-500 focus:outline-none transition-colors resize-none"
-                      placeholder="Tell us about your project..."
+                      rows="5"
+                      className="w-full px-4 py-3.5 rounded-xl border-2 border-gray-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 focus:outline-none transition-all resize-none"
+                      placeholder="Tell us about your project and how we can help..."
                     ></textarea>
                   </div>
 
@@ -241,87 +296,226 @@ export default function Contact() {
                     type="submit"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="w-full bg-gradient-to-r from-primary-600 to-secondary-600 text-white px-8 py-4 rounded-full font-semibold hover:shadow-2xl transition-all flex items-center justify-center gap-2"
+                    className="group relative w-full overflow-hidden bg-gradient-to-r from-primary-600 to-secondary-600 text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-2xl transition-all"
                   >
-                    Send Message
-                    <Send size={20} />
+                    <span className="relative z-10 flex items-center justify-center gap-2">
+                      Send Message
+                      <Send size={20} className="group-hover:translate-x-1 transition-transform" />
+                    </span>
+                    
+                    {/* Shimmer effect */}
+                    <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
                   </motion.button>
                 </form>
               </div>
             </motion.div>
 
-            {/* Map & Additional Info */}
+            {/* Right Column - Image & Info Cards */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="lg:col-span-2 space-y-6"
+              className="space-y-6"
             >
-              {/* Map Placeholder */}
-              <div className="bg-white rounded-3xl shadow-2xl overflow-hidden h-64">
-                <div className="w-full h-full bg-gradient-to-br from-primary-100 to-secondary-100 flex items-center justify-center">
-                  <div className="text-center">
-                    <MapPin size={48} className="text-primary-600 mx-auto mb-4" />
-                    <p className="text-dark-700 font-semibold">Bhopal, India</p>
-                  </div>
+              {/* Hero Image */}
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl group">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary-600/20 to-secondary-600/20 z-10 group-hover:opacity-0 transition-opacity duration-500"></div>
+                <img
+                  src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&auto=format&fit=crop"
+                  alt="Team collaboration"
+                  className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-8 z-20">
+                  <h4 className="text-white text-2xl font-bold mb-2">Let's Build Something Great</h4>
+                  <p className="text-white/90">Together we can turn your vision into reality</p>
                 </div>
               </div>
 
-              {/* Quick Contact Card */}
-              <div className="bg-gradient-to-br from-primary-600 to-secondary-600 rounded-3xl shadow-2xl p-8 text-white">
-                <h4 className="text-2xl font-bold mb-4">Quick Response</h4>
-                <p className="mb-6 text-white/90">
-                  Need immediate assistance? We're here to help!
-                </p>
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
-                      <Mail size={20} />
-                    </div>
-                    <div>
-                      <p className="text-sm text-white/80">Email Response</p>
-                      <p className="font-semibold">Within 24 hours</p>
-                    </div>
+              {/* Quick Response Card */}
+              <div className="relative bg-gradient-to-br from-primary-600 to-secondary-600 rounded-3xl shadow-2xl p-8 text-white overflow-hidden">
+                <div className="absolute top-0 right-0 w-48 h-48 bg-white/10 rounded-full translate-x-12 -translate-y-12"></div>
+                <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/10 rounded-full -translate-x-12 translate-y-12"></div>
+                
+                <div className="relative z-10">
+                  <div className="flex items-center gap-2 mb-4">
+                    <Sparkles size={24} />
+                    <h4 className="text-2xl font-bold">Quick Response Guarantee</h4>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
-                      <Phone size={20} />
-                    </div>
-                    <div>
-                      <p className="text-sm text-white/80">Phone Support</p>
-                      <p className="font-semibold">Mon-Fri, 9AM-6PM IST</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Why Contact Us */}
-              <div className="bg-white rounded-3xl shadow-2xl p-8">
-                <h4 className="text-2xl font-bold text-dark-900 mb-4">Why Contact Us?</h4>
-                <ul className="space-y-3">
-                  {[
-                    'Free consultation',
-                    'No obligation quote',
-                    'Expert advice',
-                    'Flexible engagement',
-                  ].map((item, index) => (
-                    <li key={index} className="flex items-center gap-3">
-                      <div className="w-6 h-6 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0">
-                        <div className="w-2 h-2 bg-primary-600 rounded-full"></div>
+                  <p className="mb-6 text-white/90">
+                    We value your time and ensure rapid response to all inquiries.
+                  </p>
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-4 bg-white/10 rounded-xl p-4 backdrop-blur-sm">
+                      <div className="flex-shrink-0 w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center">
+                        <Mail size={24} />
                       </div>
-                      <span className="text-dark-700">{item}</span>
-                    </li>
+                      <div>
+                        <p className="text-sm text-white/80">Email Response</p>
+                        <p className="font-semibold text-lg">Within 24 hours</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-4 bg-white/10 rounded-xl p-4 backdrop-blur-sm">
+                      <div className="flex-shrink-0 w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center">
+                        <Phone size={24} />
+                      </div>
+                      <div>
+                        <p className="text-sm text-white/80">Phone Support</p>
+                        <p className="font-semibold text-lg">Mon-Fri, 9AM-6PM IST</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Benefits Card */}
+              <div className="bg-white rounded-3xl shadow-xl p-8 border border-gray-100">
+                <h4 className="text-2xl font-bold text-gray-900 mb-6">Why Reach Out?</h4>
+                <div className="space-y-4">
+                  {benefits.map((item, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.1 }}
+                      className="flex items-center gap-4 group"
+                    >
+                      <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-primary-50 to-secondary-50 rounded-xl flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                        {item.icon}
+                      </div>
+                      <span className="text-gray-700 font-medium">{item.text}</span>
+                    </motion.div>
                   ))}
-                </ul>
+                </div>
               </div>
             </motion.div>
           </div>
         </div>
       </section>
 
+      {/* Google Map Section */}
+      <section className="section-padding bg-white">
+        <div className="container-custom">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Find Us on the <span className="gradient-text">Map</span>
+            </h2>
+            <p className="text-xl text-gray-600">
+              Located in the heart of Bhopal, Madhya Pradesh
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="relative rounded-3xl overflow-hidden shadow-2xl border border-gray-200"
+          >
+            {/* Google Maps Embed */}
+            <div className="w-full h-[500px] relative">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3666.7445!2d77.4289!3d23.2156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397c43f7e3b3b3b3%3A0x0!2sMahendra%20Business%20Square%2C%20Bawadiya%20Kalan%2C%20Bhopal!5e0!3m2!1sen!2sin!4v1234567890"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Intellosoft Office Location"
+              ></iframe>
+            </div>
+
+            {/* Overlay Info Card */}
+            <div className="absolute bottom-6 left-6 right-6 md:left-auto md:right-6 md:w-96 bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl p-6 border border-gray-200">
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-primary-600 to-secondary-600 rounded-xl flex items-center justify-center">
+                  <MapPin className="text-white" size={24} />
+                </div>
+                <div className="flex-1">
+                  <h4 className="text-lg font-bold text-gray-900 mb-2">Intellosoft</h4>
+                  <p className="text-sm text-gray-600 leading-relaxed mb-3">
+                    Block - 1, Mahendra Business Square<br />
+                    Bawadiya Kalan, Bhopal<br />
+                    Madhya Pradesh 462039, India
+                  </p>
+                  <a
+                    href="https://maps.google.com/?q=Mahendra+Business+Square+Bawadiya+Kalan+Bhopal"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700 font-semibold text-sm group"
+                  >
+                    Get Directions
+                    <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Location Details Grid */}
+          <div className="grid md:grid-cols-3 gap-6 mt-12">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-6 border border-blue-100"
+            >
+              <div className="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center mb-4">
+                <MapPin className="text-white" size={24} />
+              </div>
+              <h4 className="text-lg font-bold text-gray-900 mb-2">Easy to Locate</h4>
+              <p className="text-gray-600 text-sm">
+                Situated in a prime business district with excellent connectivity and ample parking space.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-6 border border-purple-100"
+            >
+              <div className="w-12 h-12 bg-purple-500 rounded-xl flex items-center justify-center mb-4">
+                <Clock className="text-white" size={24} />
+              </div>
+              <h4 className="text-lg font-bold text-gray-900 mb-2">Visit By Appointment</h4>
+              <p className="text-gray-600 text-sm">
+                Schedule a meeting to discuss your project and tour our modern office facilities.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-6 border border-green-100"
+            >
+              <div className="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center mb-4">
+                <Phone className="text-white" size={24} />
+              </div>
+              <h4 className="text-lg font-bold text-gray-900 mb-2">Call Before Visit</h4>
+              <p className="text-gray-600 text-sm">
+                Contact us in advance to ensure our team is available to give you the best experience.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* FAQ Section */}
-      <section className="section-padding bg-gradient-to-b from-gray-50 to-white">
+      <section className="section-padding bg-gradient-to-b from-white to-gray-50">
         <div className="container-custom max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -329,9 +523,10 @@ export default function Contact() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-4xl font-bold text-dark-900 mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
               Frequently Asked <span className="gradient-text">Questions</span>
             </h2>
+            <p className="text-xl text-gray-600">Quick answers to common questions</p>
           </motion.div>
 
           <div className="space-y-4">
@@ -359,10 +554,17 @@ export default function Contact() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-white rounded-2xl shadow-lg p-6"
+                className="group bg-white rounded-2xl shadow-md hover:shadow-xl p-6 border border-gray-100 transition-all duration-300"
               >
-                <h4 className="text-lg font-bold text-dark-900 mb-2">{faq.q}</h4>
-                <p className="text-dark-600">{faq.a}</p>
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0 w-8 h-8 bg-gradient-to-br from-primary-600 to-secondary-600 rounded-lg flex items-center justify-center">
+                    <CheckCircle2 size={18} className="text-white" />
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors">{faq.q}</h4>
+                    <p className="text-gray-600 leading-relaxed">{faq.a}</p>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
