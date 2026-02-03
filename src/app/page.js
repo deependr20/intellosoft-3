@@ -263,7 +263,7 @@ export default function Home() {
       </section>
 
       {/* Meet Our Team */}
-      <section className="section-padding bg-white">
+      {/* <section className="section-padding bg-white">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -317,7 +317,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Stats Section */}
       <section className="section-padding bg-gradient-to-r from-primary-600 to-secondary-600">
