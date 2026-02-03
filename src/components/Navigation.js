@@ -23,7 +23,7 @@ export default function Navigation() {
     { name: 'Home', href: '/' },
     { name: 'About Us', href: '/about' },
     { name: 'Services', href: '/services' },
-    { name: 'Solutions', href: '/solutions' },
+    // { name: 'Solutions', href: '/solutions' },
     { name: 'Careers', href: '/careers' },
     { name: 'Contact', href: '/contact' },
   ]

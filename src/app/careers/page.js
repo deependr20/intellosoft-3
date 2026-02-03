@@ -1,10 +1,19 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { Briefcase, Heart, TrendingUp, Coffee, Users, Award, MapPin, Clock, DollarSign, ArrowRight } from 'lucide-react'
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Briefcase, Heart, TrendingUp, Coffee, Users, Award, MapPin, Clock, DollarSign, ArrowRight, X, Upload, CheckCircle } from 'lucide-react'
 import Link from 'next/link'
 
 export default function Careers() {
+  const router = useRouter()
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [selectedPosition, setSelectedPosition] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitMessage, setSubmitMessage] = useState(null)
+  const [fileName, setFileName] = useState('')
+
   const benefits = [
     {
       icon: <Heart size={40} />,
@@ -54,51 +63,6 @@ export default function Careers() {
       skills: ['React', 'Node.js', 'AWS', 'MongoDB'],
       description: 'Looking for an experienced full-stack developer to lead complex projects'
     },
-    {
-      title: 'Mobile App Developer',
-      department: 'Engineering',
-      location: 'Bhopal / Remote',
-      type: 'Full-time',
-      experience: '3-5 years',
-      skills: ['React Native', 'Flutter', 'iOS', 'Android'],
-      description: 'Build amazing mobile experiences for our clients'
-    },
-    {
-      title: 'UI/UX Designer',
-      department: 'Design',
-      location: 'Bhopal / Remote',
-      type: 'Full-time',
-      experience: '3-5 years',
-      skills: ['Figma', 'Adobe XD', 'User Research', 'Prototyping'],
-      description: 'Create beautiful and intuitive user interfaces'
-    },
-    {
-      title: 'DevOps Engineer',
-      department: 'Operations',
-      location: 'Bhopal / Remote',
-      type: 'Full-time',
-      experience: '4-6 years',
-      skills: ['AWS', 'Docker', 'Kubernetes', 'CI/CD'],
-      description: 'Build and maintain our cloud infrastructure'
-    },
-    {
-      title: 'Project Manager',
-      department: 'Management',
-      location: 'Bhopal',
-      type: 'Full-time',
-      experience: '5-8 years',
-      skills: ['Agile', 'Scrum', 'JIRA', 'Stakeholder Management'],
-      description: 'Lead cross-functional teams to deliver successful projects'
-    },
-    {
-      title: 'QA Engineer',
-      department: 'Quality Assurance',
-      location: 'Bhopal / Remote',
-      type: 'Full-time',
-      experience: '2-4 years',
-      skills: ['Selenium', 'API Testing', 'Test Automation', 'JIRA'],
-      description: 'Ensure quality across all our software products'
-    },
   ]
 
   const perks = [
@@ -111,6 +75,47 @@ export default function Careers() {
     'Team Outings',
     'Parental Leave',
   ]
+
+  const handleApplyClick = (title) => {
+    setSelectedPosition(title)
+    setSubmitMessage(null)
+    setFileName('')
+    setIsModalOpen(true)
+  }
+
+  const handleFileChange = (e) => {
+    if (e.target.files && e.target.files[0]) {
+      setFileName(e.target.files[0].name)
+    }
+  }
+
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    setIsSubmitting(true)
+    setSubmitMessage(null)
+
+    const formData = new FormData(event.target)
+
+    try {
+      const res = await fetch('/api/apply', {
+        method: 'POST',
+        body: formData,
+      })
+
+      if (!res.ok) {
+        throw new Error('Failed to submit')
+      }
+
+      event.target.reset()
+      setIsModalOpen(false)
+      router.push('/thank-you')
+    } catch (error) {
+      console.error(error)
+      setSubmitMessage('Something went wrong. Please try again later.')
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
 
   return (
     <main className="pt-20">
@@ -127,7 +132,7 @@ export default function Careers() {
                 Join Our <span className="gradient-text">Amazing Team</span>
               </h1>
               <p className="text-xl text-dark-600 mb-8">
-                Be part of a dynamic team that's shaping the future of technology. 
+                Be part of a dynamic team that's shaping the future of technology.
                 We're always looking for talented individuals who are passionate about innovation.
               </p>
               <motion.a
@@ -277,15 +282,15 @@ export default function Careers() {
                       </span>
                     </div>
                   </div>
-                  <Link href="/contact">
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="bg-gradient-to-r from-primary-600 to-secondary-600 text-white px-6 py-3 rounded-full font-semibold whitespace-nowrap"
-                    >
-                      Apply Now
-                    </motion.button>
-                  </Link>
+                  <motion.button
+                    type="button"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="bg-gradient-to-r from-primary-600 to-secondary-600 text-white px-6 py-3 rounded-full font-semibold whitespace-nowrap"
+                    onClick={() => handleApplyClick(job.title)}
+                  >
+                    Apply Now
+                  </motion.button>
                 </div>
 
                 <p className="text-dark-600 mb-4">{job.description}</p>
@@ -325,19 +330,208 @@ export default function Careers() {
             <p className="text-xl mb-8">
               We're always looking for talented people. Send us your resume and we'll keep you in mind for future opportunities.
             </p>
-            <Link href="/contact">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-white text-primary-600 px-8 py-4 rounded-full font-semibold hover:shadow-2xl transition-all inline-flex items-center gap-2"
-              >
-                Get in Touch
-                <ArrowRight size={20} />
-              </motion.button>
-            </Link>
+            <motion.button
+              type="button"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-white text-primary-600 px-8 py-4 rounded-full font-semibold hover:shadow-2xl transition-all inline-flex items-center gap-2"
+              onClick={() => handleApplyClick('General Application')}
+            >
+              Get in Touch
+              <ArrowRight size={20} />
+            </motion.button>
           </motion.div>
         </div>
       </section>
+
+      {/* Modern Application Modal */}
+      <AnimatePresence>
+        {isModalOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm px-4"
+            onClick={() => setIsModalOpen(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 20 }}
+              transition={{ type: 'spring', duration: 0.5 }}
+              className="bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto relative"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Header */}
+              <div className="sticky top-0 bg-gradient-to-r from-primary-600 to-secondary-600 text-white p-8 rounded-t-3xl">
+                <button
+                  type="button"
+                  className="absolute top-6 right-6 text-white/80 hover:text-white transition-colors"
+                  onClick={() => setIsModalOpen(false)}
+                >
+                  <X size={28} />
+                </button>
+                <h3 className="text-3xl font-bold mb-2">Apply for Position</h3>
+                <p className="text-white/90 text-lg">{selectedPosition}</p>
+              </div>
+
+              {/* Form */}
+              <form className="p-8 space-y-6" onSubmit={handleSubmit}>
+                <input type="hidden" name="position" value={selectedPosition} />
+                
+                {/* Personal Info */}
+                <div>
+                  <h4 className="text-lg font-semibold text-dark-900 mb-4 flex items-center gap-2">
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-r from-primary-600 to-secondary-600 text-white flex items-center justify-center text-sm font-bold">1</div>
+                    Personal Information
+                  </h4>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-semibold text-dark-700 mb-2">Full Name *</label>
+                      <input
+                        name="name"
+                        type="text"
+                        required
+                        placeholder="John Doe"
+                        className="w-full rounded-xl border-2 border-gray-200 px-4 py-3 focus:outline-none focus:border-primary-500 transition-colors"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-semibold text-dark-700 mb-2">Email Address *</label>
+                      <input
+                        name="email"
+                        type="email"
+                        required
+                        placeholder="john@example.com"
+                        className="w-full rounded-xl border-2 border-gray-200 px-4 py-3 focus:outline-none focus:border-primary-500 transition-colors"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Contact */}
+                <div>
+                  <h4 className="text-lg font-semibold text-dark-900 mb-4 flex items-center gap-2">
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-r from-primary-600 to-secondary-600 text-white flex items-center justify-center text-sm font-bold">2</div>
+                    Contact Details
+                  </h4>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-semibold text-dark-700 mb-2">Phone Number *</label>
+                      <input
+                        name="phone"
+                        type="tel"
+                        required
+                        placeholder="+91 98765 43210"
+                        className="w-full rounded-xl border-2 border-gray-200 px-4 py-3 focus:outline-none focus:border-primary-500 transition-colors"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-semibold text-dark-700 mb-2">LinkedIn Profile</label>
+                      <input
+                        name="linkedin"
+                        type="url"
+                        placeholder="linkedin.com/in/username"
+                        className="w-full rounded-xl border-2 border-gray-200 px-4 py-3 focus:outline-none focus:border-primary-500 transition-colors"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Professional */}
+                <div>
+                  <h4 className="text-lg font-semibold text-dark-900 mb-4 flex items-center gap-2">
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-r from-primary-600 to-secondary-600 text-white flex items-center justify-center text-sm font-bold">3</div>
+                    Professional Links
+                  </h4>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-semibold text-dark-700 mb-2">GitHub Profile</label>
+                      <input
+                        name="github"
+                        type="url"
+                        placeholder="github.com/username"
+                        className="w-full rounded-xl border-2 border-gray-200 px-4 py-3 focus:outline-none focus:border-primary-500 transition-colors"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-semibold text-dark-700 mb-2">Portfolio Website</label>
+                      <input
+                        name="portfolio"
+                        type="url"
+                        placeholder="www.yourportfolio.com"
+                        className="w-full rounded-xl border-2 border-gray-200 px-4 py-3 focus:outline-none focus:border-primary-500 transition-colors"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Resume Upload */}
+                <div>
+                  <h4 className="text-lg font-semibold text-dark-900 mb-4 flex items-center gap-2">
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-r from-primary-600 to-secondary-600 text-white flex items-center justify-center text-sm font-bold">4</div>
+                    Upload Resume
+                  </h4>
+                  <div className="relative">
+                    <input
+                      name="resume"
+                      type="file"
+                      accept=".pdf,.doc,.docx"
+                      required
+                      onChange={handleFileChange}
+                      className="hidden"
+                      id="resume-upload"
+                    />
+                    <label
+                      htmlFor="resume-upload"
+                      className="flex items-center justify-center gap-3 w-full rounded-xl border-2 border-dashed border-gray-300 px-6 py-8 cursor-pointer hover:border-primary-500 hover:bg-primary-50 transition-all"
+                    >
+                      <Upload size={32} className="text-primary-600" />
+                      <div className="text-center">
+                        <p className="text-dark-700 font-semibold">
+                          {fileName || 'Click to upload your resume'}
+                        </p>
+                        <p className="text-sm text-dark-500 mt-1">PDF, DOC, or DOCX (Max 5MB)</p>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+
+                {submitMessage && (
+                  <div className="p-4 bg-red-50 border border-red-200 rounded-xl">
+                    <p className="text-sm text-red-700 text-center">{submitMessage}</p>
+                  </div>
+                )}
+
+                {/* Actions */}
+                <div className="flex gap-4 pt-4">
+                  <button
+                    type="button"
+                    className="flex-1 px-6 py-4 rounded-xl border-2 border-gray-300 text-dark-700 font-semibold hover:bg-gray-50 transition-colors"
+                    onClick={() => setIsModalOpen(false)}
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="flex-1 px-6 py-4 rounded-xl bg-gradient-to-r from-primary-600 to-secondary-600 text-white font-semibold hover:shadow-lg transition-all disabled:opacity-60 disabled:cursor-not-allowed"
+                  >
+                    {isSubmitting ? (
+                      <span className="flex items-center justify-center gap-2">
+                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                        Submitting...
+                      </span>
+                    ) : (
+                      'Submit Application'
+                    )}
+                  </button>
+                </div>
+              </form>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </main>
   )
 }

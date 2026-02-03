@@ -14,11 +14,35 @@ export default function Contact() {
     service: '',
     message: ''
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitMessage, setSubmitMessage] = useState(null)
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    alert('Thank you for your message! We will get back to you within 24 hours.')
-    setFormData({ name: '', email: '', phone: '', company: '', service: '', message: '' })
+    setIsSubmitting(true)
+    setSubmitMessage(null)
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (!res.ok) {
+        throw new Error('Failed to send')
+      }
+
+      setSubmitMessage('Thank you for your message! We will get back to you within 24 hours.')
+      setFormData({ name: '', email: '', phone: '', company: '', service: '', message: '' })
+    } catch (error) {
+      console.error(error)
+      setSubmitMessage('Something went wrong. Please try again later.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (e) => {
@@ -296,14 +320,19 @@ export default function Contact() {
                     ></textarea>
                   </div>
 
+                  {submitMessage && (
+                    <p className="text-sm text-center text-gray-700">{submitMessage}</p>
+                  )}
+
                   <motion.button
                     type="submit"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="group relative w-full overflow-hidden bg-gradient-to-r from-primary-600 to-secondary-600 text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-2xl transition-all"
+                    disabled={isSubmitting}
+                    className="group relative w-full overflow-hidden bg-gradient-to-r from-primary-600 to-secondary-600 text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-2xl transition-all disabled:opacity-60 disabled:cursor-not-allowed"
                   >
                     <span className="relative z-10 flex items-center justify-center gap-2">
-                      Send Message
+                      {isSubmitting ? 'Sending...' : 'Send Message'}
                       <Send size={20} className="group-hover:translate-x-1 transition-transform" />
                     </span>
                     
