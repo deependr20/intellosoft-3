@@ -6,9 +6,9 @@ import Link from 'next/link'
 
 export default function Home() {
   const stats = [
-    { number: '500+', label: 'Projects Delivered', icon: <CheckCircle size={32} /> },
-    { number: '200+', label: 'Happy Clients', icon: <Users size={32} /> },
-    { number: '15+', label: 'Years Experience', icon: <Award size={32} /> },
+    { number: '200+', label: 'Projects Delivered', icon: <CheckCircle size={32} /> },
+    { number: '100+', label: 'Happy Clients', icon: <Users size={32} /> },
+    { number: '10+', label: 'Years Experience', icon: <Award size={32} /> },
     { number: '98%', label: 'Client Satisfaction', icon: <TrendingUp size={32} /> },
   ]
 
@@ -44,20 +44,20 @@ export default function Home() {
 
   const testimonials = [
     {
-      name: 'Sarah Johnson',
-      role: 'CEO, TechCorp',
+      name: 'Pawan Pathak',
+      role: 'GM, Tulip Inn',
       content: 'Intellosoft transformed our business with their innovative solutions. Their team is professional, responsive, and truly understands our needs.',
       rating: 5
     },
     {
-      name: 'Michael Chen',
-      role: 'CTO, StartupHub',
+      name: 'Vasant Patel',
+      role: 'CEO, Space Realty',
       content: 'Working with Intellosoft was a game-changer for our startup. They delivered beyond our expectations and within budget.',
       rating: 5
     },
     {
-      name: 'Emily Rodriguez',
-      role: 'Director, GlobalTech',
+      name: 'Susmita Deb',
+      role: 'HOD, World Way',
       content: 'The best technology partner we have worked with. Their expertise and dedication to excellence are unmatched.',
       rating: 5
     },
@@ -209,7 +209,7 @@ export default function Home() {
                     <CheckCircle className="text-white" size={24} />
                   </div>
                   <div>
-                    <p className="text-2xl font-bold text-dark-900">500+</p>
+                    <p className="text-2xl font-bold text-dark-900">200+</p>
                     <p className="text-sm text-dark-600">Projects Completed</p>
                   </div>
                 </div>

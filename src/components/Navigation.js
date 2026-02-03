@@ -50,7 +50,7 @@ export default function Navigation() {
                   src="/intellosoft-logo.png"
                   alt="Intellosoft logo"
                   className={`block w-auto object-contain transition-all duration-300 ${
-                    scrolled ? 'h-12 md:h-14 lg:h-16' : 'h-16 md:h-18 lg:h-20'
+                    scrolled ? 'h-16 md:h-18 lg:h-20' : 'h-16 md:h-18 lg:h-20'
                   }`}
                 />
               </div>

@@ -34,28 +34,32 @@ export default function Contact() {
       title: 'Visit Us',
       content: ['Block - 1, Mahendra Business Square', 'Bawadiya Kalan, Bhopal', 'Madhya Pradesh 462039, India'],
       gradient: 'from-blue-500 to-cyan-500',
-      iconBg: 'bg-blue-50'
+      iconBg: 'bg-blue-50',
+      iconColor: 'text-blue-500'
     },
     {
       icon: <Mail size={24} />,
       title: 'Email Us',
       content: ['gourav@intellosoft.io', 'info@intellosoft.io'],
       gradient: 'from-purple-500 to-pink-500',
-      iconBg: 'bg-purple-50'
+      iconBg: 'bg-purple-50',
+      iconColor: 'text-purple-500'
     },
     {
       icon: <Phone size={24} />,
       title: 'Call Us',
       content: ['Available during business hours', 'Mon - Fri: 9:00 AM - 6:00 PM IST'],
       gradient: 'from-green-500 to-emerald-500',
-      iconBg: 'bg-green-50'
+      iconBg: 'bg-green-50',
+      iconColor: 'text-green-500'
     },
     {
       icon: <Clock size={24} />,
       title: 'Business Hours',
       content: ['Monday - Friday: 9:00 AM - 6:00 PM', 'Saturday: 10:00 AM - 2:00 PM', 'Sunday: Closed'],
       gradient: 'from-orange-500 to-amber-500',
-      iconBg: 'bg-orange-50'
+      iconBg: 'bg-orange-50',
+      iconColor: 'text-orange-500'
     },
   ]
 
@@ -151,7 +155,7 @@ export default function Contact() {
                 
                 <div className="relative">
                   <div className={`inline-flex items-center justify-center w-14 h-14 ${info.iconBg} rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                    <div className={`text-transparent bg-clip-text bg-gradient-to-br ${info.gradient}`}>
+                    <div className={info.iconColor}>
                       {info.icon}
                     </div>
                   </div>
@@ -533,7 +537,7 @@ export default function Contact() {
             {[
               {
                 q: 'What is your typical project timeline?',
-                a: 'Project timelines vary based on complexity. A typical web application takes 3-6 months, while mobile apps take 4-8 months. We provide detailed timelines during consultation.'
+                a: 'Project timelines vary based on complexity. A typical web application takes 2-4 months, while mobile apps take 4-6 months. We provide detailed timelines during consultation.'
               },
               {
                 q: 'Do you work with startups?',

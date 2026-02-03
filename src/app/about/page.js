@@ -1,140 +1,165 @@
-'use client'
+"use client";
 
-import { motion } from 'framer-motion'
-import { Target, Users, Award, TrendingUp, Heart, Lightbulb, Shield, Zap, CheckCircle, Globe, Rocket, Star, Trophy } from 'lucide-react'
-import Link from 'next/link'
+import { motion } from "framer-motion";
+import {
+  Target,
+  Users,
+  Award,
+  TrendingUp,
+  Heart,
+  Lightbulb,
+  Shield,
+  Zap,
+  CheckCircle,
+  Globe,
+  Rocket,
+  Star,
+  Trophy,
+} from "lucide-react";
+import Link from "next/link";
 
 export default function About() {
   const values = [
     {
       icon: <Lightbulb size={40} />,
-      title: 'Innovation',
-      description: 'We constantly push boundaries to deliver cutting-edge solutions',
-      gradient: 'from-yellow-500 to-orange-500',
-      iconBg: 'bg-yellow-50'
+      title: "Innovation",
+      description:
+        "We constantly push boundaries to deliver cutting-edge solutions",
+      gradient: "from-yellow-500 to-orange-500",
+      iconBg: "bg-yellow-50",
     },
     {
       icon: <Heart size={40} />,
-      title: 'Integrity',
-      description: 'Transparency and honesty in every client interaction',
-      gradient: 'from-red-500 to-pink-500',
-      iconBg: 'bg-red-50'
+      title: "Integrity",
+      description: "Transparency and honesty in every client interaction",
+      gradient: "from-red-500 to-pink-500",
+      iconBg: "bg-red-50",
     },
     {
       icon: <Users size={40} />,
-      title: 'Collaboration',
-      description: 'Working together to achieve extraordinary results',
-      gradient: 'from-blue-500 to-cyan-500',
-      iconBg: 'bg-blue-50'
+      title: "Collaboration",
+      description: "Working together to achieve extraordinary results",
+      gradient: "from-blue-500 to-cyan-500",
+      iconBg: "bg-blue-50",
     },
     {
       icon: <Award size={40} />,
-      title: 'Excellence',
-      description: 'Commitment to delivering the highest quality work',
-      gradient: 'from-purple-500 to-pink-500',
-      iconBg: 'bg-purple-50'
+      title: "Excellence",
+      description: "Commitment to delivering the highest quality work",
+      gradient: "from-purple-500 to-pink-500",
+      iconBg: "bg-purple-50",
     },
-  ]
+  ];
 
   const team = [
     {
-      name: 'Gourav Sharma',
-      role: 'Founder & CEO',
-      image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&auto=format&fit=crop',
-      description: 'Visionary leader with 15+ years in software development',
-      gradient: 'from-blue-600 to-cyan-600'
+      name: "Gourav Sharma",
+      role: "Founder & CEO",
+      image:
+        "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&auto=format&fit=crop",
+      description: "Visionary leader with 15+ years in software development",
+      gradient: "from-blue-600 to-cyan-600",
     },
     {
-      name: 'Priya Patel',
-      role: 'CTO',
-      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&auto=format&fit=crop',
-      description: 'Tech innovator specializing in cloud architecture',
-      gradient: 'from-purple-600 to-pink-600'
+      name: "Priya Patel",
+      role: "CTO",
+      image:
+        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&auto=format&fit=crop",
+      description: "Tech innovator specializing in cloud architecture",
+      gradient: "from-purple-600 to-pink-600",
     },
     {
-      name: 'Rahul Verma',
-      role: 'Head of Development',
-      image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&auto=format&fit=crop',
-      description: 'Expert in agile methodologies and team leadership',
-      gradient: 'from-green-600 to-emerald-600'
+      name: "Rahul Verma",
+      role: "Head of Development",
+      image:
+        "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&auto=format&fit=crop",
+      description: "Expert in agile methodologies and team leadership",
+      gradient: "from-green-600 to-emerald-600",
     },
     {
-      name: 'Anjali Reddy',
-      role: 'Design Director',
-      image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&auto=format&fit=crop',
-      description: 'Creative mind behind our user-centered designs',
-      gradient: 'from-orange-600 to-amber-600'
+      name: "Anjali Reddy",
+      role: "Design Director",
+      image:
+        "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&auto=format&fit=crop",
+      description: "Creative mind behind our user-centered designs",
+      gradient: "from-orange-600 to-amber-600",
     },
-  ]
+  ];
 
   const milestones = [
-    { 
-      year: '2009', 
-      title: 'Company Founded', 
-      description: 'Started with a vision to transform businesses through technology',
-      icon: <Rocket size={24} />
+    {
+      year: "2015",
+      title: "Company Founded",
+      description:
+        "Started with a vision to transform businesses through technology",
+      icon: <Rocket size={24} />,
     },
-    { 
-      year: '2012', 
-      title: 'First Major Client', 
-      description: 'Secured partnership with leading enterprise organization',
-      icon: <Star size={24} />
+    {
+      year: "2018",
+      title: "First Major Client",
+      description: "Secured partnership with leading enterprise organization",
+      icon: <Star size={24} />,
     },
-    { 
-      year: '2015', 
-      title: 'Team Expansion', 
-      description: 'Grew to 50+ talented professionals',
-      icon: <Users size={24} />
+    {
+      year: "2020",
+      title: "Team Expansion",
+      description: "Grew to 20+ talented professionals",
+      icon: <Users size={24} />,
     },
-    { 
-      year: '2018', 
-      title: 'International Presence', 
-      description: 'Expanded services to global markets',
-      icon: <Globe size={24} />
+    {
+      year: "2022",
+      title: "International Presence",
+      description: "Expanded services to global markets",
+      icon: <Globe size={24} />,
     },
-    { 
-      year: '2020', 
-      title: 'Innovation Award', 
-      description: 'Recognized for excellence in software development',
-      icon: <Trophy size={24} />
+    
+    {
+      year: "2024",
+      title: "200+ Projects",
+      description: "Delivered successful solutions across industries",
+      icon: <Award size={24} />,
     },
-    { 
-      year: '2024', 
-      title: '500+ Projects', 
-      description: 'Delivered successful solutions across industries',
-      icon: <Award size={24} />
-    },
-  ]
+
+  {
+  year: "2026",
+  title: "Scaling New Heights",
+  description:
+    "Onwards towards the path to be recognized globally as the leading software consulting firm, we are now growing rapidly in India and overseas.",
+  icon: <Rocket size={24} />,
+}
+
+
+  ];
 
   const stats = [
-    { number: '15+', label: 'Years of Excellence', icon: '⏱️' },
-    { number: '500+', label: 'Projects Delivered', icon: '🚀' },
-    { number: '200+', label: 'Happy Clients', icon: '😊' },
-    { number: '50+', label: 'Team Members', icon: '👥' },
-  ]
+    { number: "10+", label: "Years of Excellence", icon: "⏱️" },
+    { number: "200+", label: "Projects Delivered", icon: "🚀" },
+    { number: "100+", label: "Happy Clients", icon: "😊" },
+    { number: "20+", label: "Team Members", icon: "👥" },
+  ];
 
   const achievements = [
     {
-      icon: '🏆',
-      title: 'Innovation Leader',
-      description: 'Recognized as top innovator in software development'
+      icon: "🏆",
+      title: "Innovation Leader",
+      description: "Recognized as top innovator in software development",
     },
     {
-      icon: '⭐',
-      title: '98% Client Satisfaction',
-      description: 'Consistently exceeding client expectations'
+      icon: "⭐",
+      title: "98% Client Satisfaction",
+      description: "Consistently exceeding client expectations",
     },
     {
-      icon: '🌍',
-      title: 'Global Reach',
-      description: 'Serving clients across 20+ countries'
+      icon: "🌍",
+      title: "Global Reach",
+      description: "Serving clients across 20+ countries",
     },
     {
-      icon: '💼',
-      title: 'Industry Expertise',
-      description: 'Deep knowledge across multiple sectors'
+      icon: "💼",
+      title: "Industry Expertise",
+      description: "Deep knowledge across multiple sectors",
     },
-  ]
+  ];
 
   return (
     <main className="pt-20">
@@ -174,18 +199,22 @@ export default function About() {
                 </div>
               </div>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6">
-                About <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">Intellosoft</span>
+                About{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">
+                  Intellosoft
+                </span>
               </h1>
               <p className="text-xl md:text-2xl text-white/90 leading-relaxed max-w-3xl mx-auto">
-                We are a modern, innovation-driven software consulting firm dedicated to helping businesses 
-                leverage technology to accelerate growth and maintain a competitive edge.
+                We are a modern, innovation-driven software consulting firm
+                dedicated to helping businesses leverage technology to
+                accelerate growth and maintain a competitive edge.
               </p>
             </motion.div>
           </motion.div>
@@ -233,18 +262,59 @@ export default function About() {
               </h2>
               <div className="space-y-4 text-gray-600">
                 <p className="text-lg leading-relaxed">
-                  Founded in 2009, Intellosoft Infotech began with a simple yet powerful vision: to bridge 
-                  the gap between businesses and technology. What started as a small team of passionate developers 
-                  has grown into a full-service software consulting firm serving clients across the globe.
+                  Intellosoft Infotech, founded by Gourav Patidar, is driven by
+                  a deep passion for digital transformation through building
+                  scalable, high-impact technology solutions that achieve real
+                  business outcomes.
                 </p>
+
                 <p className="text-lg leading-relaxed">
-                  Over the years, we've successfully delivered 500+ projects, helping businesses of all sizes 
-                  achieve their digital transformation goals. Our commitment to excellence, innovation, and 
-                  client success has made us a trusted technology partner.
+                  As a Software Engineer, Gourav gained invaluable exposure to
+                  enterprise-grade systems, cloud platforms, product
+                  engineering, and mission-critical software development during
+                  his tenure at{" "}
+                  <a
+                    href="https://www.salesforce.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:underline"
+                  >
+                    Salesforce, Inc.
+                  </a>{" "}
+                  and{" "}
+                  <a
+                    href="https://www.synopsys.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:underline"
+                  >
+                    Synopsys Inc.
+                  </a>{" "}
+                  over the last decade. He holds a Master’s degree in Computer
+                  Information Science from{" "}
+                  <a
+                    href="https://www.fit.edu"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:underline"
+                  >
+                    Florida Institute of Technology, USA
+                  </a>
+                  .
                 </p>
+
                 <p className="text-lg leading-relaxed">
-                  Today, we continue to push boundaries, embrace new technologies, and deliver solutions that 
-                  make a real difference in our clients' businesses.
+                  Over the years, we've successfully delivered 200+ projects,
+                  helping businesses of all sizes achieve their digital
+                  transformation goals. Our commitment to excellence,
+                  innovation, and client success has made us a trusted
+                  technology partner.
+                </p>
+
+                <p className="text-lg leading-relaxed">
+                  Today, we continue to push boundaries, embrace new
+                  technologies, and deliver solutions that make a real
+                  difference in our clients' businesses.
                 </p>
               </div>
 
@@ -260,8 +330,12 @@ export default function About() {
                     className="bg-gradient-to-br from-primary-50 to-secondary-50 rounded-xl p-4 border border-primary-100"
                   >
                     <div className="text-3xl mb-2">{achievement.icon}</div>
-                    <h4 className="font-bold text-gray-900 mb-1 text-sm">{achievement.title}</h4>
-                    <p className="text-xs text-gray-600">{achievement.description}</p>
+                    <h4 className="font-bold text-gray-900 mb-1 text-sm">
+                      {achievement.title}
+                    </h4>
+                    <p className="text-xs text-gray-600">
+                      {achievement.description}
+                    </p>
                   </motion.div>
                 ))}
               </div>
@@ -287,13 +361,17 @@ export default function About() {
                       <Trophy className="text-white" size={32} />
                     </div>
                     <div>
-                      <div className="text-3xl font-bold text-gray-900 mb-1">15+ Years</div>
-                      <div className="text-gray-600 font-medium">Of Excellence</div>
+                      <div className="text-3xl font-bold text-gray-900 mb-1">
+                        10+ Years
+                      </div>
+                      <div className="text-gray-600 font-medium">
+                        Of Excellence
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-              
+
               {/* Decorative Glow */}
               <div className="absolute -inset-4 bg-gradient-to-r from-primary-600 to-secondary-600 rounded-3xl blur-2xl opacity-20 -z-10"></div>
             </motion.div>
@@ -317,20 +395,23 @@ export default function About() {
                 alt="Mission"
                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
               />
-              
+
               {/* Gradient Overlay */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary-600/95 to-secondary-600/95"></div>
-              
+
               {/* Content */}
               <div className="relative p-12 text-white min-h-[400px] flex flex-col justify-end">
                 <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center mb-6">
                   <Target size={32} />
                 </div>
-                <h3 className="text-3xl md:text-4xl font-bold mb-6">Our Mission</h3>
+                <h3 className="text-3xl md:text-4xl font-bold mb-6">
+                  Our Mission
+                </h3>
                 <p className="text-lg text-white/95 leading-relaxed">
-                  To empower businesses with innovative technology solutions that drive growth, enhance efficiency, 
-                  and create lasting value. We strive to be more than just a service provider—we aim to be a trusted 
-                  partner in our clients' success journey.
+                  To empower businesses with innovative technology solutions
+                  that drive growth, enhance efficiency, and create lasting
+                  value. We strive to be more than just a service provider—we
+                  aim to be a trusted partner in our clients' success journey.
                 </p>
               </div>
             </motion.div>
@@ -348,20 +429,24 @@ export default function About() {
                 alt="Vision"
                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
               />
-              
+
               {/* Gradient Overlay */}
               <div className="absolute inset-0 bg-gradient-to-br from-gray-900/95 to-gray-800/95"></div>
-              
+
               {/* Content */}
               <div className="relative p-12 text-white min-h-[400px] flex flex-col justify-end">
                 <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center mb-6">
                   <Globe size={32} />
                 </div>
-                <h3 className="text-3xl md:text-4xl font-bold mb-6">Our Vision</h3>
+                <h3 className="text-3xl md:text-4xl font-bold mb-6">
+                  Our Vision
+                </h3>
                 <p className="text-lg text-white/95 leading-relaxed">
-                  To be recognized globally as the leading software consulting firm that consistently delivers 
-                  exceptional value through innovation, expertise, and unwavering commitment to client success. 
-                  We envision a future where technology seamlessly transforms businesses.
+                  To be recognized globally as the leading software consulting
+                  firm that consistently delivers exceptional value through
+                  innovation, expertise, and unwavering commitment to client
+                  success. We envision a future where technology seamlessly
+                  transforms businesses.
                 </p>
               </div>
             </motion.div>
@@ -398,27 +483,35 @@ export default function About() {
               >
                 <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl p-8 text-center transition-all duration-300 border border-gray-100 h-full">
                   {/* Gradient background on hover */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${value.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300 rounded-2xl`}></div>
-                  
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-br ${value.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300 rounded-2xl`}
+                  ></div>
+
                   <div className="relative">
                     <motion.div
                       whileHover={{ rotate: 360, scale: 1.1 }}
                       transition={{ duration: 0.5 }}
                       className="inline-block mb-6"
                     >
-                      <div className={`w-20 h-20 ${value.iconBg} rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                        <div className={`text-transparent bg-clip-text bg-gradient-to-br ${value.gradient}`}>
-                          {value.icon}
-                        </div>
+                      <div
+                        className={`w-20 h-20 ${value.iconBg} rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
+                      >
+                        <div className={`value.iconBg`}>{value.icon}</div>
                       </div>
                     </motion.div>
-                    <h4 className="text-xl font-bold text-gray-900 mb-3">{value.title}</h4>
-                    <p className="text-gray-600 leading-relaxed">{value.description}</p>
+                    <h4 className="text-xl font-bold text-gray-900 mb-3">
+                      {value.title}
+                    </h4>
+                    <p className="text-gray-600 leading-relaxed">
+                      {value.description}
+                    </p>
                   </div>
                 </div>
 
                 {/* Floating Glow Effect */}
-                <div className={`absolute -inset-0.5 bg-gradient-to-r ${value.gradient} rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500 -z-10`}></div>
+                <div
+                  className={`absolute -inset-0.5 bg-gradient-to-r ${value.gradient} rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500 -z-10`}
+                ></div>
               </motion.div>
             ))}
           </div>
@@ -460,22 +553,30 @@ export default function About() {
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                     {/* Gradient Overlay on Hover */}
-                    <div className={`absolute inset-0 bg-gradient-to-t ${member.gradient} opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex items-end p-6`}>
+                    <div
+                      className={`absolute inset-0 bg-gradient-to-t ${member.gradient} opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex items-end p-6`}
+                    >
                       <p className="text-white text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
                         {member.description}
                       </p>
                     </div>
                   </div>
                   <div className="p-6 text-center">
-                    <h4 className="text-xl font-bold text-gray-900 mb-2">{member.name}</h4>
-                    <p className={`font-semibold mb-3 text-transparent bg-clip-text bg-gradient-to-r ${member.gradient}`}>
+                    <h4 className="text-xl font-bold text-gray-900 mb-2">
+                      {member.name}
+                    </h4>
+                    <p
+                      className={`font-semibold mb-3 text-transparent bg-clip-text bg-gradient-to-r ${member.gradient}`}
+                    >
                       {member.role}
                     </p>
                   </div>
                 </div>
 
                 {/* Floating Glow Effect */}
-                <div className={`absolute -inset-0.5 bg-gradient-to-r ${member.gradient} rounded-3xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500 -z-10`}></div>
+                <div
+                  className={`absolute -inset-0.5 bg-gradient-to-r ${member.gradient} rounded-3xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500 -z-10`}
+                ></div>
               </motion.div>
             ))}
           </div>
@@ -523,12 +624,10 @@ export default function About() {
                 {index !== milestones.length - 1 && (
                   <div className="absolute left-[23px] top-16 w-0.5 h-full bg-gradient-to-b from-primary-600 to-secondary-600"></div>
                 )}
-                
+
                 {/* Timeline dot with icon */}
                 <div className="absolute left-0 top-2 w-12 h-12 bg-gradient-to-br from-primary-600 to-secondary-600 rounded-2xl flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
-                  <div className="text-white">
-                    {milestone.icon}
-                  </div>
+                  <div className="text-white">{milestone.icon}</div>
                 </div>
 
                 <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl p-8 ml-8 border border-gray-100 transition-all duration-300 group">
@@ -540,7 +639,9 @@ export default function About() {
                   <h4 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-primary-600 transition-colors">
                     {milestone.title}
                   </h4>
-                  <p className="text-gray-600 text-lg">{milestone.description}</p>
+                  <p className="text-gray-600 text-lg">
+                    {milestone.description}
+                  </p>
                 </div>
               </motion.div>
             ))}
@@ -562,10 +663,12 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-4xl md:text-5xl font-bold mb-4">Join Our Success Story</h3>
+              <h3 className="text-4xl md:text-5xl font-bold mb-4">
+                Join Our Success Story
+              </h3>
               <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-                Whether you're looking for a technology partner or want to join our team, 
-                we'd love to hear from you.
+                Whether you're looking for a technology partner or want to join
+                our team, we'd love to hear from you.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/contact">
@@ -593,5 +696,5 @@ export default function About() {
         </div>
       </section>
     </main>
-  )
+  );
 }

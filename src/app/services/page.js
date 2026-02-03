@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Code, Cloud, Smartphone, Database, Shield, Cog, Globe, Zap, Users, ArrowRight, CheckCircle2, Sparkles, Target, Trophy, Clock, HeartHandshake } from 'lucide-react'
+import { Code, CloudCog , Cloud, Smartphone, Database, Shield, Cog, Globe, Zap, Users, ArrowRight, CheckCircle2, Sparkles, Target, Trophy, Clock, HeartHandshake } from 'lucide-react'
 import Link from 'next/link'
 
 export default function Services() {
@@ -54,22 +54,7 @@ export default function Services() {
       technologies: ['React Native', 'Flutter', 'Swift', 'Kotlin', 'iOS/Android'],
       image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&auto=format&fit=crop'
     },
-    {
-      icon: <Database size={40} />,
-      title: 'Data Analytics & BI',
-      description: 'Transform your data into actionable insights and competitive advantage',
-      features: [
-        'Business intelligence solutions',
-        'Data warehousing',
-        'Predictive analytics',
-        'Real-time dashboards',
-      ],
-      gradient: 'from-green-500 via-emerald-600 to-teal-600',
-      bgPattern: 'bg-green-50',
-      iconBg: 'bg-green-100',
-      technologies: ['Power BI', 'Tableau', 'Python', 'SQL', 'Apache Spark'],
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop'
-    },
+   
     {
       icon: <Shield size={40} />,
       title: 'Cybersecurity Services',
@@ -102,6 +87,29 @@ export default function Services() {
       technologies: ['TOGAF', 'ITIL', 'Agile', 'DevOps', 'Lean'],
       image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&auto=format&fit=crop'
     },
+    {
+  icon: <CloudCog size={40} />,
+  title: 'Salesforce Development & Implementation',
+  description: 'End-to-end Salesforce solutions to streamline CRM, sales, and business operations',
+  features: [
+    'Salesforce CRM implementation',
+    'Custom Salesforce development',
+    'Sales & Service Cloud setup',
+    'Salesforce integration & automation',
+  ],
+  gradient: 'from-sky-500 via-blue-600 to-indigo-600',
+  bgPattern: 'bg-sky-50',
+  iconBg: 'bg-sky-100',
+  technologies: [
+    'Salesforce',
+    'Apex',
+    'Lightning Web Components',
+    'Sales Cloud',
+    'Service Cloud',
+  ],
+  image: 'https://images.unsplash.com/photo-1556155092-8707de31f9c4?w=800&auto=format&fit=crop'
+},
+
     {
       icon: <Globe size={40} />,
       title: 'Web Development',
@@ -180,9 +188,9 @@ export default function Services() {
   ]
 
   const stats = [
-    { number: '500+', label: 'Projects Completed', icon: '🚀' },
-    { number: '200+', label: 'Happy Clients', icon: '😊' },
-    { number: '50+', label: 'Expert Team Members', icon: '👥' },
+    { number: '200+', label: 'Projects Completed', icon: '🚀' },
+    { number: '100+', label: 'Happy Clients', icon: '😊' },
+    { number: '20+', label: 'Expert Team Members', icon: '👥' },
     { number: '10+', label: 'Years Experience', icon: '⭐' },
   ]
 
@@ -190,7 +198,7 @@ export default function Services() {
     {
       icon: <Trophy size={28} />,
       title: 'Proven Excellence',
-      description: 'Track record of 500+ successful projects across diverse industries',
+      description: 'Track record of 200+ successful projects across diverse industries',
       gradient: 'from-yellow-500 to-orange-500'
     },
     {
@@ -351,7 +359,7 @@ export default function Services() {
                         transition={{ duration: 0.5 }}
                         className="w-14 h-14 bg-white rounded-xl flex items-center justify-center shadow-lg"
                       >
-                        <div className={`text-transparent bg-clip-text bg-gradient-to-br ${service.gradient}`}>
+                        <div className={""}>
                           {service.icon}
                         </div>
                       </motion.div>
@@ -506,7 +514,7 @@ export default function Services() {
                       <Trophy className="text-white" size={32} />
                     </div>
                     <div>
-                      <div className="text-3xl font-bold text-gray-900 mb-1">500+</div>
+                      <div className="text-3xl font-bold text-gray-900 mb-1">200+</div>
                       <div className="text-gray-600 font-medium">Successful Projects</div>
                     </div>
                   </div>
@@ -601,7 +609,7 @@ export default function Services() {
       </section>
 
       {/* Testimonial Section */}
-      <section className="section-padding bg-white">
+      {/* <section className="section-padding bg-white">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -662,7 +670,7 @@ export default function Services() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
     </main>
   )
 }

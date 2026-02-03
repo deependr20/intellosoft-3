@@ -70,7 +70,7 @@ export default function Solutions() {
       industries: ['Hospitals', 'Clinics', 'Health Tech'],
       image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&auto=format&fit=crop'
     },
-    {
+    {   
       icon: <GraduationCap size={40} />,
       title: 'Education Solutions',
       description: 'Modern learning management and education platforms',
@@ -138,8 +138,8 @@ export default function Solutions() {
   ]
 
   const stats = [
-    { number: '50+', label: 'Industries Served', icon: '🏢' },
-    { number: '500+', label: 'Solutions Delivered', icon: '✅' },
+    { number: '20+', label: 'Industries Served', icon: '🏢' },
+    { number: '200+', label: 'Solutions Delivered', icon: '✅' },
     { number: '98%', label: 'Client Satisfaction', icon: '⭐' },
     { number: '24/7', label: 'Support Available', icon: '🛟' },
   ]
@@ -340,7 +340,7 @@ export default function Solutions() {
                         transition={{ duration: 0.5 }}
                         className="w-14 h-14 bg-white rounded-xl flex items-center justify-center shadow-lg"
                       >
-                        <div className={`text-transparent bg-clip-text bg-gradient-to-br ${solution.gradient}`}>
+                        <div className={solutions.iconBg}>
                           {solution.icon}
                         </div>
                       </motion.div>
