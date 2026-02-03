@@ -47,7 +47,7 @@ export default function Navigation() {
             >
               <div className="flex items-center justify-center">
                 <img
-                  src="/intellosoft-logo.png"
+                  src="/intellosoft-logoooo.png"
                   alt="Intellosoft logo"
                   className={`block w-auto object-contain transition-all duration-300 ${
                     scrolled ? 'h-16 md:h-18 lg:h-20' : 'h-16 md:h-18 lg:h-20'

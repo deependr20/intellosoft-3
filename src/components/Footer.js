@@ -51,8 +51,8 @@ export default function Footer() {
     {
       title: 'Resources',
       links: [
-        { name: 'Privacy Policy', href: '#' },
-        { name: 'Terms & Conditions', href: '#' },
+        { name: 'Privacy Policy', href: '/Intellosoft_Infotech_Privacy_Policy.pdf' },
+        { name: 'Terms & Conditions', href: '/Intellosoft_Infotech_Terms_of_Service.pdf' },
         { name: 'Documentation', href: '#' },
         { name: 'Support', href: '#' },
       ]
@@ -89,7 +89,7 @@ export default function Footer() {
             >
               <div className="flex items-center">
                 <div className="flex items-center justify-center">
-                  <img src="/intellosoft-logosss.png" alt="Intellosoft logo" className="block w-auto h-16 md:h-20 lg:h-24 object-contain" />
+                  <img src="/intellosoft-logosa.png" alt="Intellosoft logo" className="block w-auto h-16 md:h-20 lg:h-24 object-contain" />
                 </div>
                 <span className="sr-only">Intellosoft Infotech</span>
               </div>
@@ -256,10 +256,10 @@ export default function Footer() {
             Copyright © {currentYear} Intellosoft Infotech Pvt. Ltd. All Rights Reserved.
           </p>
           <div className="flex gap-6 text-sm">
-            <Link href="#" className="text-gray-400 hover:text-primary-400 transition-colors">
+            <Link href="/Intellosoft_Infotech_Privacy_Policy.pdf" className="text-gray-400 hover:text-primary-400 transition-colors">
               Privacy Policy
             </Link>
-            <Link href="#" className="text-gray-400 hover:text-primary-400 transition-colors">
+            <Link href="/Intellosoft_Infotech_Terms_of_Service.pdf" className="text-gray-400 hover:text-primary-400 transition-colors">
               Terms of Service
             </Link>
             <Link href="#" className="text-gray-400 hover:text-primary-400 transition-colors">
