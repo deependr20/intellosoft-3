@@ -15,6 +15,7 @@ import {
   Rocket,
   Star,
   Trophy,
+  Linkedin,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -59,6 +60,7 @@ export default function About() {
         "/gourav.jpeg",
       description: "Visionary leader with 10+ years in software development",
       gradient: "from-blue-600 to-cyan-600",
+      linkedin: "https://www.linkedin.com/in/gourav-patidar-15a19449/",
     },
     {
       name: "Priya Patel",
@@ -67,14 +69,16 @@ export default function About() {
         "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&auto=format&fit=crop",
       description: "Tech innovator specializing in cloud architecture",
       gradient: "from-purple-600 to-pink-600",
+      linkedin: "#",
     },
     {
       name: "Deependra Patel",
       role: "Senior Software Engineer",
       image:
         "/deependra.jpeg",
-      description: "Expert in agile methodologies and team leadership",
+      description: "Full-stack MERN developer specializing in scalable web applications, modern JavaScript frameworks, and building robust RESTful APIs",
       gradient: "from-green-600 to-emerald-600",
+      linkedin: "https://www.linkedin.com/in/deependra-patel-57b0ba266/",
     },
    
   ];
@@ -283,7 +287,7 @@ export default function About() {
                   >
                     Synopsys Inc.
                   </a>{" "}
-                  over the last decade. He holds a Master’s degree in Computer
+                  over the last decade. He holds a Master's degree in Computer
                   Information Science from{" "}
                   <a
                     href="https://www.fit.edu"
@@ -564,6 +568,19 @@ export default function About() {
                     >
                       {member.role}
                     </p>
+                    
+                    {/* LinkedIn Button */}
+                    <motion.a
+                      href={member.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className={`inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r ${member.gradient} text-white rounded-full text-sm font-semibold shadow-md hover:shadow-lg transition-all duration-300`}
+                    >
+                      <Linkedin size={16} />
+                      Connect on LinkedIn
+                    </motion.a>
                   </div>
                 </div>
 
