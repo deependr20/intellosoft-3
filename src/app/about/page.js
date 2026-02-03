@@ -574,12 +574,12 @@ export default function About() {
                       href={member.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
-                      whileHover={{ scale: 1.05 }}
+                      whileHover={{ scale: 1.1, y: -2 }}
                       whileTap={{ scale: 0.95 }}
-                      className={`inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r ${member.gradient} text-white rounded-full text-sm font-semibold shadow-md hover:shadow-lg transition-all duration-300`}
+                      className={`inline-flex items-center justify-center w-10 h-10 bg-gradient-to-r ${member.gradient} text-white rounded-full shadow-md hover:shadow-lg transition-all duration-300`}
+                      aria-label="LinkedIn Profile"
                     >
-                      <Linkedin size={16} />
-                      Connect on LinkedIn
+                      <Linkedin size={20} />
                     </motion.a>
                   </div>
                 </div>
