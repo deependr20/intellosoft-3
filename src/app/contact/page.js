@@ -64,7 +64,7 @@ export default function Contact() {
     {
       icon: <Mail size={24} />,
       title: 'Email Us',
-      content: ['gourav@intellosoft.io', 'info@intellosoft.io'],
+      content: ['hello@intellosoft.io', 'info@intellosoft.io'],
       gradient: 'from-purple-500 to-pink-500',
       iconBg: 'bg-purple-50',
       iconColor: 'text-purple-500'
