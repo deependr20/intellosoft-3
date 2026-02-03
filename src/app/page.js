@@ -1,8 +1,9 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ArrowRight, CheckCircle, Users, Award, TrendingUp, Globe, ChevronDown, Sparkles, Zap, Shield, Code, Cloud, Smartphone } from 'lucide-react'
+import { ArrowRight, CheckCircle, Users, Award, TrendingUp, Globe, ChevronDown, Sparkles, Zap, Shield, Code, Cloud, Smartphone, Linkedin } from 'lucide-react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function Home() {
   const stats = [
@@ -60,6 +61,23 @@ export default function Home() {
       role: 'HOD, World Way',
       content: 'The best technology partner we have worked with. Their expertise and dedication to excellence are unmatched.',
       rating: 5
+    },
+  ]
+
+  const team = [
+    {
+      name: 'Gourav Patidar',
+      role: 'Founder & CEO',
+      image: '/gourav.jpeg',
+      bio: 'Leads strategy, client success, and overall vision at Intellosoft.',
+      linkedin: 'https://www.linkedin.com', // replace with real profile
+    },
+    {
+      name: 'Deependra Patel',
+      role: 'Co-founder & CTO',
+      image: '/deependra.jpeg',
+      bio: 'Heads engineering, architecture, and technology innovation.',
+      linkedin: 'https://www.linkedin.com', // replace with real profile
     },
   ]
 
@@ -242,6 +260,63 @@ export default function Home() {
         >
           <ChevronDown className="text-primary-600" size={32} />
         </motion.div>
+      </section>
+
+      {/* Meet Our Team */}
+      <section className="section-padding bg-white">
+        <div className="container-custom">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="section-title">
+              Meet <span className="gradient-text">Our Team</span>
+            </h2>
+            <p className="section-subtitle">
+              The people driving Intellosoft&apos;s vision and delivering results for our clients
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
+            {team.map((member, index) => (
+              <motion.div
+                key={member.name}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-white rounded-3xl shadow-xl border border-gray-100 p-6 flex flex-col sm:flex-row items-center gap-6 card-hover"
+              >
+                <div className="relative w-32 h-32 rounded-2xl overflow-hidden shadow-lg flex-shrink-0">
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="text-center sm:text-left">
+                  <h3 className="text-2xl font-bold text-dark-900">{member.name}</h3>
+                  <p className="text-primary-600 font-semibold mb-2">{member.role}</p>
+                  <p className="text-dark-600 mb-3 text-sm">{member.bio}</p>
+                  <div className="flex justify-center sm:justify-start gap-3">
+                    <a
+                      href={member.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-sm text-primary-600 hover:text-primary-700 font-semibold"
+                    >
+                      <Linkedin size={18} />
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* Stats Section */}

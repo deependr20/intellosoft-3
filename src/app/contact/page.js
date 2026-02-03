@@ -140,7 +140,7 @@ export default function Contact() {
                 </div>
               </div>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -176,7 +176,7 @@ export default function Contact() {
               >
                 {/* Gradient background on hover */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${info.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}></div>
-                
+
                 <div className="relative">
                   <div className={`inline-flex items-center justify-center w-14 h-14 ${info.iconBg} rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300`}>
                     <div className={info.iconColor}>
@@ -200,7 +200,7 @@ export default function Contact() {
       <section className="section-padding bg-gradient-to-b from-gray-50 to-white">
         <div className="container-custom">
           <div className="grid lg:grid-cols-2 gap-12 items-start">
-            
+
             {/* Left Column - Form */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
@@ -217,7 +217,7 @@ export default function Contact() {
                     Fill out the form below and our team will get back to you within 24 hours.
                   </p>
                 </div>
-                
+
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
@@ -335,7 +335,7 @@ export default function Contact() {
                       {isSubmitting ? 'Sending...' : 'Send Message'}
                       <Send size={20} className="group-hover:translate-x-1 transition-transform" />
                     </span>
-                    
+
                     {/* Shimmer effect */}
                     <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
                   </motion.button>
@@ -369,7 +369,7 @@ export default function Contact() {
               <div className="relative bg-gradient-to-br from-primary-600 to-secondary-600 rounded-3xl shadow-2xl p-8 text-white overflow-hidden">
                 <div className="absolute top-0 right-0 w-48 h-48 bg-white/10 rounded-full translate-x-12 -translate-y-12"></div>
                 <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/10 rounded-full -translate-x-12 translate-y-12"></div>
-                
+
                 <div className="relative z-10">
                   <div className="flex items-center gap-2 mb-4">
                     <Sparkles size={24} />
@@ -454,7 +454,7 @@ export default function Contact() {
             {/* Google Maps Embed */}
             <div className="w-full h-[500px] relative">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3666.7445!2d77.4289!3d23.2156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397c43f7e3b3b3b3%3A0x0!2sMahendra%20Business%20Square%2C%20Bawadiya%20Kalan%2C%20Bhopal!5e0!3m2!1sen!2sin!4v1234567890"
+                src="https://www.google.com/maps?q=Intellosoft%20Infotech%20Pvt.%20Ltd.,%20Block%20-%201,%20Mahendra%20Business%20Square,%20Bawadiya%20Kalan,%20Salaiya,%20Bhopal,%20Madhya%20Pradesh%20462039&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -474,12 +474,12 @@ export default function Contact() {
                 <div className="flex-1">
                   <h4 className="text-lg font-bold text-gray-900 mb-2">Intellosoft</h4>
                   <p className="text-sm text-gray-600 leading-relaxed mb-3">
-                    Block - 1, Mahendra Business Square<br />
-                    Bawadiya Kalan, Bhopal<br />
-                    Madhya Pradesh 462039, India
+                    Intellosoft Infotech Pvt. Ltd.<br />
+                    Block - 1, Mahendra Business Square, Bawadiya Kalan, Salaiya<br />
+                    Bhopal, Madhya Pradesh 462039
                   </p>
                   <a
-                    href="https://maps.google.com/?q=Mahendra+Business+Square+Bawadiya+Kalan+Bhopal"
+                    href="https://maps.google.com/?q=Intellosoft+Infotech+Pvt.+Ltd.,+Block+-+1,+Mahendra+Business+Square,+Bawadiya+Kalan,+Salaiya,+Bhopal,+Madhya+Pradesh+462039"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700 font-semibold text-sm group"

@@ -359,11 +359,11 @@ export default function Careers() {
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.9, opacity: 0, y: 20 }}
               transition={{ type: 'spring', duration: 0.5 }}
-              className="bg-white rounded-3xl  shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden relative"
+              className="bg-white rounded-3xl  shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-x-hidden overflow-y-auto relative"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Header */}
-              <div className="sticky top-0 bg-gradient-to-r from-primary-600 to-secondary-600 text-white p-8 rounded-t-3xl">
+              <div className="sticky top-0 bg-gradient-to-r w-full from-primary-600 to-secondary-600 text-white p-8 rounded-l-3xl ">
                 <button
                   type="button"
                   className="absolute top-6 right-6 text-white/80 hover:text-white transition-colors"

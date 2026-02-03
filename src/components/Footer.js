@@ -1,7 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Github, Linkedin, Twitter, Mail, MapPin, Phone, ArrowRight } from 'lucide-react'
+import { useState } from 'react'
+import { Github, Linkedin, Twitter, Mail, MapPin, Phone, ArrowRight } from 'lucide-react' 
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -9,10 +10,14 @@ import Image from 'next/image'
 export default function Footer() {
   const currentYear = new Date().getFullYear()
 
-  const socialLinks = [
-    { icon: <Linkedin size={20} />, href: '#', label: 'LinkedIn', color: 'hover:bg-blue-600' },
-    { icon: <Twitter size={20} />, href: '#', label: 'Twitter', color: 'hover:bg-sky-500' },
-    { icon: <Github size={20} />, href: '#', label: 'GitHub', color: 'hover:bg-gray-800' },
+  const [email, setEmail] = useState('')
+  const [subscribed, setSubscribed] = useState(false)
+  const [loading, setLoading] = useState(false)
+
+  const socialLinks = [ 
+    { icon: <Linkedin size={20} />, href: 'https://www.linkedin.com/company/intellosoft-infotech/posts/?feedView=all', label: 'LinkedIn', color: 'hover:bg-blue-600' },
+    // { icon: <Twitter size={20} />, href: '#', label: 'Twitter', color: 'hover:bg-sky-500' },
+    // { icon: <Github size={20} />, href: '#', label: 'GitHub', color: 'hover:bg-gray-800' },
   ]
 
   const footerSections = [
@@ -53,6 +58,15 @@ export default function Footer() {
       ]
     }
   ]
+
+  const handleSubscribe = () => {
+    setLoading(true)
+    // Simulate API call
+    setTimeout(() => {
+      setLoading(false)
+      setSubscribed(true)
+    }, 2000)
+  }
 
   return (
     <footer className="relative bg-gradient-to-br from-dark-900 via-dark-800 to-dark-900 text-white overflow-hidden">
@@ -109,6 +123,7 @@ export default function Footer() {
               <div className="flex gap-3">
                 {socialLinks.map((social, index) => (
                   <motion.a
+                    target='_blank'
                     key={index}
                     href={social.href}
                     whileHover={{ scale: 1.1, y: -2 }}
@@ -164,19 +179,68 @@ export default function Footer() {
             <p className="text-gray-400 mb-6">
               Subscribe to our newsletter for the latest insights and updates
             </p>
-            <div className="flex  md:flex-row flex-col md:items-start items-center gap-3 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-6 py-4 w-fit rounded-full bg-white/10 backdrop-blur-sm border border-gray-600 focus:border-primary-500 focus:outline-none transition-colors text-white placeholder-gray-400"
-              />
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-gradient-to-r w-fit md:mt-0 mt-2 from-primary-600 to-secondary-600 rounded-full font-semibold hover:shadow-lg transition-shadow whitespace-nowrap"
-              >
-                Subscribe
-              </motion.button>
+            <div className="flex md:flex-row flex-col md:items-start items-center gap-3 max-w-md mx-auto">
+              {!subscribed ? (
+                <>
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Enter your email"
+                    className="flex-1 px-6 py-4 w-fit rounded-full bg-white/10 backdrop-blur-sm border border-gray-600 focus:border-primary-500 focus:outline-none transition-colors text-white placeholder-gray-400"
+                    disabled={loading}
+                  />
+                  <motion.button
+                    onClick={handleSubscribe}
+                    disabled={loading}
+                    whileHover={!loading ? { scale: 1.05 } : {}}
+                    whileTap={!loading ? { scale: 0.95 } : {}}
+                    className="px-8 py-4 bg-gradient-to-r w-fit md:mt-0 mt-2 from-primary-600 to-secondary-600 rounded-full font-semibold hover:shadow-lg transition-shadow whitespace-nowrap disabled:opacity-70 disabled:cursor-not-allowed relative overflow-hidden"
+                  >
+                    {loading ? (
+                      <div className="flex items-center gap-2">
+                        <div className="flex gap-1">
+                          <motion.div
+                            className="w-2 h-2 bg-white rounded-full"
+                            animate={{ y: [0, -8, 0] }}
+                            transition={{ duration: 0.6, repeat: Infinity, delay: 0 }}
+                          />
+                          <motion.div
+                            className="w-2 h-2 bg-white rounded-full"
+                            animate={{ y: [0, -8, 0] }}
+                            transition={{ duration: 0.6, repeat: Infinity, delay: 0.2 }}
+                          />
+                          <motion.div
+                            className="w-2 h-2 bg-white rounded-full"
+                            animate={{ y: [0, -8, 0] }}
+                            transition={{ duration: 0.6, repeat: Infinity, delay: 0.4 }}
+                          />
+                        </div>
+                      </div>
+                    ) : (
+                      'Subscribe'
+                    )}
+                  </motion.button>
+                </>
+              ) : (
+                <motion.div
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  className="flex items-center gap-2"
+                >
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ type: "spring", stiffness: 200, damping: 10 }}
+                    className="w-6 h-6 text-center bg-green-500 rounded-full flex items-center justify-center"
+                  >
+                    <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </motion.div>
+                  <p className="text-green-400 text-center  font-semibold">Thank you for subscribing!</p>
+                </motion.div>
+              )}
             </div>
           </div>
         </motion.div>

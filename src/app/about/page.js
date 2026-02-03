@@ -53,11 +53,11 @@ export default function About() {
 
   const team = [
     {
-      name: "Gourav Sharma",
+      name: "Gourav Patidar",
       role: "Founder & CEO",
       image:
-        "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&auto=format&fit=crop",
-      description: "Visionary leader with 15+ years in software development",
+        "/gourav.jpeg",
+      description: "Visionary leader with 10+ years in software development",
       gradient: "from-blue-600 to-cyan-600",
     },
     {
@@ -69,21 +69,14 @@ export default function About() {
       gradient: "from-purple-600 to-pink-600",
     },
     {
-      name: "Rahul Verma",
-      role: "Head of Development",
+      name: "Deependra Patel",
+      role: "Senior Software Engineer",
       image:
-        "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&auto=format&fit=crop",
+        "/deependra.jpeg",
       description: "Expert in agile methodologies and team leadership",
       gradient: "from-green-600 to-emerald-600",
     },
-    {
-      name: "Anjali Reddy",
-      role: "Design Director",
-      image:
-        "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&auto=format&fit=crop",
-      description: "Creative mind behind our user-centered designs",
-      gradient: "from-orange-600 to-amber-600",
-    },
+   
   ];
 
   const milestones = [
@@ -535,7 +528,7 @@ export default function About() {
             </p>
           </motion.div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {team.map((member, index) => (
               <motion.div
                 key={index}
@@ -550,7 +543,8 @@ export default function About() {
                     <img
                       src={member.image}
                       alt={member.name}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      className="w-full h-full object-cover transform-gpu scale-105 transition-transform duration-700 ease-out"
+                      style={{ objectPosition: member.name === 'Gourav Patidar' ? 'center 10%' : 'center 30%' }}
                     />
                     {/* Gradient Overlay on Hover */}
                     <div

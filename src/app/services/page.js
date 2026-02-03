@@ -593,15 +593,7 @@ export default function Services() {
                     <ArrowRight size={20} />
                   </motion.button>
                 </Link>
-                <Link href="/solutions">
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-primary-600 transition-all"
-                  >
-                    View Solutions
-                  </motion.button>
-                </Link>
+           
               </div>
             </motion.div>
           </div>
