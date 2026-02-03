@@ -132,7 +132,7 @@ export default function Careers() {
                 Join Our <span className="gradient-text">Amazing Team</span>
               </h1>
               <p className="text-xl text-dark-600 mb-8">
-                Be part of a dynamic team that's shaping the future of technology.
+                Be part of a dynamic team that is shaping the future of technology.
                 We're always looking for talented individuals who are passionate about innovation.
               </p>
               <motion.a
